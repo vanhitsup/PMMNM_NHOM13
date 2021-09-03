@@ -27,7 +27,7 @@
                     {{csrf_field()}}
                     <div class="form-group">
                         <label for="exampleInputEmail1">Tên sản phẩm</label>
-                        <input type="text" name="product_name" required class="form-control" id="exampleInputEmail1" placeholder="Nhập tên danh mục sản phẩm">
+                        <input type="text" name="product_name" required class="form-control" id="exampleInputEmail1" placeholder="Nhập tên sản phẩm">
                     </div>
 
                     <div class="form-group">

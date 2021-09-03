@@ -13,12 +13,9 @@
                             </div>
                             <div class="slider-info gray-bg">
                                 <div class="slider-info-inner">
-                                    <h1 class="slider-title-1 text-uppercase text-black-1">WaterProof smartphone</h1>
+                                    <h3 class="slider-title-1 text-uppercase text-black-1">Đặt Hàng Ngay-Nhận Ngàn Ưu Đãi</h3>
                                     <div class="slider-brief text-black-2">
-                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority
-                                            have suffered alteration in some form, by injected humour, or randomised words
-                                            which don't look even slightly believable. If you are going to use a passage of
-                                            Lorem Ipsum,</p>
+                                        <p>V.A Smart là nhà phân phối thiết bị công nghệ, điện tử hàng đầu Việt Nam. Đi đầu trong lĩnh vực công nghệ, luôn mang đến những sản phẩm công nghệ mới nhất trên thế giới đến với người dùng.</p>
                                     </div>
                                     <a href="{{\Illuminate\Support\Facades\URL::to('shop')}}" class="button extra-small button-black">
                                         <span class="text-uppercase">Mua ngay</span>
@@ -36,12 +33,9 @@
                             </div>
                             <div class="slider-info gray-bg">
                                 <div class="slider-info-inner">
-                                    <h1 class="slider-title-1 text-uppercase text-black-1">WaterProof smartphone</h1>
+                                    <h1 class="slider-title-1 text-uppercase text-black-1">Đặt Hàng Ngay-Nhận Ngàn Ưu Đãi</h1>
                                     <div class="slider-brief text-black-2">
-                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority
-                                            have suffered alteration in some form, by injected humour, or randomised words
-                                            which don't look even slightly believable. If you are going to use a passage of
-                                            Lorem Ipsum,</p>
+                                        <p>V.A Smart là nhà phân phối thiết bị công nghệ, điện tử hàng đầu Việt Nam. Đi đầu trong lĩnh vực công nghệ, luôn mang đến những sản phẩm công nghệ mới nhất trên thế giới đến với người dùng.</p>
                                     </div>
                                     <a href="{{\Illuminate\Support\Facades\URL::to('shop')}}" class="button extra-small button-black">
                                         <span class="text-uppercase">Mua ngay</span>
@@ -59,12 +53,9 @@
                             </div>
                             <div class="slider-info gray-bg">
                                 <div class="slider-info-inner">
-                                    <h1 class="slider-title-1 text-uppercase text-black-1">WaterProof smartphone</h1>
+                                    <h1 class="slider-title-1 text-uppercase text-black-1">Đặt Hàng Ngay-Nhận Ngàn Ưu Đãi</h1>
                                     <div class="slider-brief text-black-2">
-                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority
-                                            have suffered alteration in some form, by injected humour, or randomised words
-                                            which don't look even slightly believable. If you are going to use a passage of
-                                            Lorem Ipsum,</p>
+                                        <p>V.A Smart là nhà phân phối thiết bị công nghệ, điện tử hàng đầu Việt Nam. Đi đầu trong lĩnh vực công nghệ, luôn mang đến những sản phẩm công nghệ mới nhất trên thế giới đến với người dùng.</p>
                                     </div>
                                     <a href="{{\Illuminate\Support\Facades\URL::to('shop')}}" class="button extra-small button-black">
                                         <span class="text-uppercase">Mua ngay</span>
@@ -157,10 +148,10 @@
                                 </a>
                             </div>
                             <div class="up-comming-pro-info f-left">
-                                <h3><a href="#">Dummy Product Name</a></h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elitest, sed do eiusmod tempor incididunt ut labore et dolores top magna aliqua. Ut enim ad minim veniam, quis nostrud exer citation ullamco laboris nisi ut aliquip ex ea commodo consequat. laborum. </p>
+                                <h3><a href="#">Sản phẩm sắp ra mắt</a></h3>
+                                <p>Chỉ còn vài tuần nữa là Apple sẽ công bố iPhone 13, sản phẩm mà chúng ta mong đợi sẽ có một số nâng cấp đáng kể từ mọi phương diện. Những tin đồn dưới đây hứa hẹn bạn sẽ cảm thấy thật tiếc nếu bỏ lỡ chúng.</p>
                                 <div class="up-comming-time">
-                                    <div data-countdown="2019/02/02"></div>
+                                    <div data-countdown=""></div>
                                 </div>
                             </div>
                         </div>
@@ -168,28 +159,28 @@
                     <div class="col-lg-4 d-block d-md-none d-lg-block">
                         <div class="banner-item banner-1">
                             <div class="ribbon-price">
-                                <span>$ 896.00</span>
+                                <span>$ 999.00</span>
                             </div>
                             <div class="banner-img">
                                 <a href="#"><img src="{{asset('../public/frontend/img/banner/1.jpg')}}" alt=""></a>
                             </div>
                             <div class="banner-info">
-                                <h3><a href="#">Product Name</a></h3>
+                                <h3><a href="#">Sản phẩm mới</a></h3>
                                 <ul class="banner-featured-list">
                                     <li>
-                                        <i class="zmdi zmdi-check"></i><span>Lorem ipsum dolor</span>
+                                        <i class="zmdi zmdi-check"></i><span>Công nghệ Micro tạo chùm tia</span>
                                     </li>
                                     <li>
-                                        <i class="zmdi zmdi-check"></i><span>amet, consectetur</span>
+                                        <i class="zmdi zmdi-check"></i><span>Lớp phủ chống vân tay </span>
                                     </li>
                                     <li>
-                                        <i class="zmdi zmdi-check"></i><span>adipisicing elitest,</span>
+                                        <i class="zmdi zmdi-check"></i><span>Viền thép không gỉ</span>
                                     </li>
                                     <li>
-                                        <i class="zmdi zmdi-check"></i><span>eiusmod tempor</span>
+                                        <i class="zmdi zmdi-check"></i><span>Chụp ảnh thiên văn </span>
                                     </li>
                                     <li>
-                                        <i class="zmdi zmdi-check"></i><span>labore et dolore.</span>
+                                        <i class="zmdi zmdi-check"></i><span>Sạc MagSafe</span>
                                     </li>
                                 </ul>
                             </div>
@@ -206,8 +197,8 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="section-title text-left mb-40">
-                            <h2 class="uppercase">product list</h2>
-                            <h6>There are many variations of passages of brands available,</h6>
+                            <h2 class="uppercase">sản phẩm nổi bật</h2>
+                            <h6>Danh sách những sản phẩm được khách hàng chú ý nhiều</h6>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -228,16 +219,19 @@
                     <div id="popular-product" class="tab-pane active show">
                         <div class="row">
                             <!-- product-item start -->
+                            @foreach($item_product as $key =>$value)
+
                             <div class="col-lg-3 col-md-4">
+
                                 <div class="product-item">
                                     <div class="product-img">
-{{--                                        <a href="{{\Illuminate\Support\Facades\URL::to('single-product/'.$value->product_id)}}">--}}
-                                            <img src="{{asset('../public/frontend/img/product/7.jpg')}}" alt="" />
+                                        <a href="{{\Illuminate\Support\Facades\URL::to('single-product/'.$value->product_id)}}">
+                                            <img src="{{\Illuminate\Support\Facades\URL::to('../public/uploads/products/'.$value->product_image)}}" alt=""/>
                                         </a>
                                     </div>
                                     <div class="product-info">
                                         <h6 class="product-title">
-{{--                                            <a href="{{\Illuminate\Support\Facades\URL::to('single-product/'.$value->product_id)}}">Product Name</a>--}}
+                                            <a href="{{\Illuminate\Support\Facades\URL::to('single-product/'.$value->product_id)}}">{{$value->product_name}}</a>
                                         </h6>
                                         <div class="pro-rating">
                                             <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -246,7 +240,7 @@
                                             <a href="#"><i class="zmdi zmdi-star-half"></i></a>
                                             <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
                                         </div>
-                                        <h3 class="pro-price">$ 869.00</h3>
+                                        <h3 class="pro-price">{{number_format($value->product_price)}} đ</h3>
                                         <ul class="action-button">
                                             <li>
                                                 <a href="#" title="Wishlist"><i class="zmdi zmdi-favorite"></i></a>
@@ -265,7 +259,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- product-item end -->
+                        @endforeach
+
+                        <!-- product-item end -->
 
                         </div>
                     </div>

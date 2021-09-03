@@ -175,102 +175,12 @@
                             </div>
                         </div>
 
-                        </form></div>
-                    <!-- single-product-area end -->
-                    @endforeach
-                    <div class="related-product-area">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="section-title text-left mb-40">
-                                    <h2 class="uppercase">Sản phẩm liên quan</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="active-related-product">
-                            <!-- product-item start -->
-                            @foreach($related_product as $key =>$value_related)
-
-                            <div class="col-lg-12" >
-                                <div class="product-item">
-                                    <div class="product-img">
-                                        <a href="{{\Illuminate\Support\Facades\URL::to('single-product/'.$value_related->product_id)}}">
-                                            <img height="250px" src="{{\Illuminate\Support\Facades\URL::to('../public/uploads/products/'.$value_related->product_image)}}" alt=""/>                                                    </a>
-                                        </a>
-                                    </div>
-                                    <div class="product-info">
-                                        <h6 class="product-title">
-                                            <a href="{{\Illuminate\Support\Facades\URL::to('single-product/'.$value_related->product_id)}}">{{$value_related->product_name}}</a>
-                                        </h6>
-                                        <div class="pro-rating">
-                                            <a href="#"><i class="zmdi zmdi-star"></i></a>
-                                            <a href="#"><i class="zmdi zmdi-star"></i></a>
-                                            <a href="#"><i class="zmdi zmdi-star"></i></a>
-                                            <a href="#"><i class="zmdi zmdi-star-half"></i></a>
-                                            <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
-                                        </div>
-                                        <h3 class="pro-price">Giá: {{number_format($value_related->product_price)}} đ</h3>
-                                        <ul class="action-button">
-                                            <li>
-                                                <a href="#" title="Wishlist"><i class="zmdi zmdi-favorite"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#" data-toggle="modal" data-target="#productModal" title="Quickview"><i
-                                                        class="zmdi zmdi-zoom-in"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#" title="Compare"><i class="zmdi zmdi-refresh"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#" title="Add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-
-                        <!-- product-item end -->
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <!-- widget-search -->
-                    <aside class="widget-search mb-30">
-                        <form action="#">
-                            <input type="text" placeholder="Search here...">
-                            <button type="submit"><i class="zmdi zmdi-search"></i></button>
                         </form>
-                    </aside>
-                    <!-- widget-categories -->
-                    <aside class="widget widget-categories box-shadow mb-30">
-                        <h6 class="widget-title border-left mb-20">Danh mục</h6>
-                        <div id="cat-treeview" class="product-cat">
-                            <ul>
-                                @foreach($cate_pro as $key=>$value_cate)
-                                    <li class="closed"><a href="{{\Illuminate\Support\Facades\URL::to('/danh-muc/'.$value_cate->category_id)}}">{{$value_cate->category_name}}</a>
+                </div>
+            @endforeach
 
-                                    </li>
-                                @endforeach
+            <!-- single-product-area end -->
 
-                            </ul>
-                        </div>
-                    </aside>
-
-                    <aside class="widget widget-categories box-shadow mb-30">
-                        <h6 class="widget-title border-left mb-20">Thương hiệu</h6>
-                        <div id="cat-treeview" class="product-cat">
-                            <ul>
-                                @foreach($brand_pro as $key=>$value_brand)
-                                    <li class="closed"><a href="{{\Illuminate\Support\Facades\URL::to('/thuong-hieu/'.$value_brand->brand_id)}}">{{$value_brand->brand_name}}</a>
-
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </aside>
-
-                    <!-- widget-product -->
                 </div>
             </div>
         </div>
