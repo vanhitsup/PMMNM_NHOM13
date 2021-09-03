@@ -42,11 +42,12 @@ Route::get('payment',[\App\Http\Controllers\CheckoutController::class,'payment']
 Route::post('add-customer',[\App\Http\Controllers\CheckoutController::class,'add_customer']);
 Route::post('save-checkout',[\App\Http\Controllers\CheckoutController::class,'save_checkout']);
 Route::post('order-place',[\App\Http\Controllers\CheckoutController::class,'order_place']);
+Route::post('confirm-order',[\App\Http\Controllers\CheckoutController::class,'confirm_order']);
 
 //Order
-Route::get('manage-order',[\App\Http\Controllers\CheckoutController::class,'manage_order']);
-Route::get('view-order/{id}',[\App\Http\Controllers\CheckoutController::class,'view_order']);
-
+Route::get('manage-order',[\App\Http\Controllers\OrderController::class,'manage_order']);
+Route::get('view-order/{id}',[\App\Http\Controllers\OrderController::class,'view_order']);
+Route::get('print-order/{order_code}',[\App\Http\Controllers\OrderController::class,'print_order']);
 
 //Admin
 Route::view('login-admin','admin.login');

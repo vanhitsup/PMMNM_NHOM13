@@ -26,25 +26,33 @@ $i=1;
                         <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Tên người đặt</th>
-                            <th>Tổng giá tiền</th>
-                            <th>Tình trạng</th>
-                            <th>Hiển thị</th>
+                            <th>Mã đơn hàng</th>
+                            <th>Ngày tháng đặt hàng</th>
+                            <th>Tình trạng đơn hàng</th>
+                            <th></th>
                         </tr>
                         </thead>
 
                         <tbody>
-                        @foreach ($all_order  as $key=>$value)
+                        @foreach($getorder as $key =>$value)
                             <tr>
                                 <td width="10px"><?php echo $i; $i++; ?></td>
-                                <td>{{$value->customer_name}}</td>
-                                <td>{{$value->order_total}} VNĐ</td>
-                                <td>{{$value->order_status}}</td>
+                                <td>{{$value->order_code}}</td>
+                                <td>{{$value->created_at}}</td>
                                 <td>
-                                    <a href="{{\Illuminate\Support\Facades\URL::to('view-order/'.$value->order_id)}}" class="active" style="text-decoration: none">
+                                    @if($value->order_status==1)
+                                        <span class="text text-success">Đơn hàng mới</span>
+                                    @elseif($value->order_status==2)
+                                        <span class="text text-primary">Đã xử lý - Đã giao hàng</span>
+                                    @else
+                                        <span class="text text-danger">Đơn hàng đã bị hủy</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="{{\Illuminate\Support\Facades\URL::to('view-order/'.$value->order_code)}}" class="active" style="text-decoration: none">
                                         <button type="button" class="btn btn-outline-success">Xem chi tiết</button>
                                     </a>
-                                    <a onclick="return confirm('Bạn có chắc muốn xóa đơn hàng này không?')"  href="{{\Illuminate\Support\Facades\URL::to('delete-order/'.$value->order_id)}}" class="active" style="text-decoration: none">
+                                    <a onclick="return confirm('Bạn có chắc muốn xóa đơn hàng này không?')"  href="{{\Illuminate\Support\Facades\URL::to('delete-order/'.$value->order_code)}}" class="active" style="text-decoration: none">
                                         <button type="button" class="btn btn-outline-danger">Xóa</button>
                                     </a>
                                 </td>

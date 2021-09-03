@@ -713,7 +713,63 @@
         });
     });
 </script>
-</body>
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        $('.send_order').click(function(){
+            var total_after = $('.total_after').val();
+            swal({
+                    title: "Xác nhận đơn hàng",
+                    text: "Bạn có chắc chắn đặt hàng ?",
+                    type: "info",
+                    showCancelButton: true,
+                    confirmButtonClass: "btn-success",
+                    confirmButtonText: "Đặt hàng",
+
+                    cancelButtonText: "Đóng",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                },
+                function(isConfirm){
+                    if (isConfirm) {
+                        var shipping_email = $('.shipping_email').val();
+                        var shipping_name = $('.shipping_name').val();
+                        var shipping_address = $('.shipping_address').val();
+                        var shipping_phone = $('.shipping_phone').val();
+                        var shipping_note = $('.shipping_note').val();
+                        var shipping_method = $('.payment_select').val();
+
+                        var order_fee = $('.order_fee').val();
+                        var order_coupon = $('.order_coupon').val();
+                        var _token = $('input[name="_token"]').val();
+
+                        $.ajax({
+                            url: '{{\Illuminate\Support\Facades\URL::to('confirm-order')}}',
+                            method: 'POST',
+                            data:{shipping_email:shipping_email,shipping_name:shipping_name,shipping_address:shipping_address,shipping_phone:shipping_phone,shipping_note:shipping_note,_token:_token,order_fee:order_fee,order_coupon:order_coupon,shipping_method:shipping_method},
+                            success:function(){
+                                swal("Đơn hàng", "Đơn hàng của bạn đã được gửi thành công", "success");
+                            }
+                        });
+
+                        window.setTimeout(function(){
+                            window.location.href = "{{\Illuminate\Support\Facades\URL::to('payment')}}";
+                        } ,3000);
+
+                    } else {
+                        swal("Đóng", "Đơn hàng chưa được gửi, làm ơn hoàn tất đơn hàng", "error");
+
+                    }
+
+                });
+
+
+        });
+    });
+
+
+</script></body>
 
 
 </html>

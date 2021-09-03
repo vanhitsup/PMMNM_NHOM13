@@ -46,17 +46,21 @@ $total_pt=0;
                                         </div>
                                     @endif
 
-                                        @php
-                                            $total = 0;
-                                        @endphp
-                                        @foreach(Session::get('cart') as $key => $cart)
-                                            @php
-                                                $subtotal = $cart['product_price']*$cart['product_qty'];
-                                                $total+=$subtotal;
-                                            @endphp
-                                        @endforeach
+
 
                             </div>
+                        @if(Session::get('cart')==true)
+
+                            @php
+                                $total = 0;
+                            @endphp
+                            @foreach(\Illuminate\Support\Facades\Session::get('cart') as $key => $cart)
+                                @php
+                                    $subtotal = $cart['product_price']*$cart['product_qty'];
+                                    $total+=$subtotal;
+                                @endphp
+                            @endforeach
+
 
                             <!-- checkout start -->
                             <div class="tab-pane active" id="checkout">
@@ -89,18 +93,42 @@ $total_pt=0;
                                     </form>
 
                                     </div>
-                                    <form action="{{\Illuminate\Support\Facades\URL::to('save-checkout')}}" method="post">
-                                        {{csrf_field()}}
+                                    <form method="post">
+                                        @csrf
                                         <div class="row">
                                             <!-- billing details -->
                                             <div class="col-md-6">
                                                 <div class="billing-details pr-10">
                                                     <h6 class="widget-title border-left mb-20">Chi tiết hóa đơn</h6>
-                                                    <input type="text" required name="shipping_name" placeholder="Họ tên bạn...">
-                                                    <input type="text" required name="shipping_email" placeholder="Địa chỉ email...">
-                                                    <input type="text" required name="shipping_phone" placeholder="Số điện thoại...">
-                                                    <input type="text" required name="shipping_address" placeholder="Địa chỉ...">
-                                                    <textarea class="custom-textarea" name="shipping_note" placeholder="Ghi chú..." required></textarea>
+                                                    <input type="text" required name="shipping_name"  class="shipping_name" placeholder="Họ tên bạn...">
+                                                    <input type="text" required name="shipping_email" class="shipping_email" placeholder="Địa chỉ email...">
+                                                    <input type="text" required name="shipping_phone" class="shipping_phone" placeholder="Số điện thoại...">
+                                                    <input type="text" required name="shipping_address" class="shipping_address" placeholder="Địa chỉ...">
+                                                    <textarea class="custom-textarea shipping_note" name="shipping_note"  placeholder="Ghi chú..." required></textarea>
+
+                                                    @if(\Illuminate\Support\Facades\Session::get('fee'))
+                                                        <input type="hidden" name="order_fee" class="order_fee" value="{{\Illuminate\Support\Facades\Session::get('fee')}}">
+                                                    @else
+                                                        <input type="hidden" name="order_fee" class="order_fee" value="10000">
+                                                    @endif
+
+                                                    @if(\Illuminate\Support\Facades\Session::get('coupon'))
+                                                        @foreach(\Illuminate\Support\Facades\Session::get('coupon') as $key => $cou)
+                                                            <input type="hidden" name="order_coupon" class="order_coupon" value="{{$cou['coupon_code']}}">
+                                                        @endforeach
+                                                    @else
+                                                        <input type="hidden" name="order_coupon" class="order_coupon" value="no">
+                                                    @endif
+
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlSelect1">Chọn hình thức thanh toán</label>
+                                                        <select required name="payment_select" class="form-control payment_select" id="exampleFormControlSelect1">
+                                                                <option value="">--- Chọn ---</option>
+                                                                <option value="0">ATM / Visa Card</option>
+                                                                <option value="1">Ship Cod</option>
+                                                        </select>
+
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -108,6 +136,7 @@ $total_pt=0;
                                                 <div class="payment-details pl-10 mb-50">
                                                     <h6 class="widget-title border-left mb-20">Đơn hàng</h6>
                                                     <table>
+
                                                         <tr>
                                                             <td class="td-title-1">Tiền hàng</td>
                                                             <td class="td-title-2">{{number_format($total,0,',','.')}} đ </td>
@@ -287,11 +316,12 @@ $total_pt=0;
 {{--                                                <input class="submit-btn-1 mt-30 btn-hover-1" name="send_order" value="Đặt hàng" type="submit">--}}
                                             </div>
                                         </div>
-                                        <input class="submit-btn-1 mt-30 btn-hover-1" name="send_order" value="Đặt hàng" type="submit">
+                                        <input class="submit-btn-1 mt-30 btn-hover-1 send_order" name="send_order" value="Đặt hàng" type="button">
 
                                     </form>
                                 </div>
                             </div>
+                        @endif
 
                             <!-- checkout end -->
                             <!-- order-complete start -->

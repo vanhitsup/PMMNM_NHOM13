@@ -1,7 +1,7 @@
 
-<?php
-
-?>
+@php
+    $total = 0;
+@endphp
 @extends('layout')
 @section('content')
     <div class="breadcrumbs-section plr-200 mb-80 section">
@@ -60,12 +60,10 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-{{--                                                    @if(Session::get('cart')==true)--}}
+                                                    @if(Session::get('cart')==true)
                                                     <!-- tr -->
-                                                    @php
-                                                        $total = 0;
-                                                    @endphp
-                                                    @foreach(Session::get('cart') as $key => $cart)
+
+                                                    @foreach(\Illuminate\Support\Facades\Session::get('cart') as $key => $cart)
                                                         @php
                                                             $subtotal = $cart['product_price']*$cart['product_qty'];
                                                             $total+=$subtotal;
@@ -99,15 +97,15 @@
                                                         </td>
                                                     </tr>
 
-{{--                                                    @else--}}
-{{--                                                        <tr>--}}
-{{--                                                            <td colspan="5">--}}
-{{--                                                                    @php--}}
-{{--                                                                        echo 'Làm ơn thêm sản phẩm vào giỏ hàng';--}}
-{{--                                                                    @endphp--}}
-{{--                                                            </td>--}}
-{{--                                                        </tr>--}}
-{{--                                                    @endif--}}
+                                                    @else
+                                                        <tr>
+                                                            <td colspan="5">
+                                                                    @php
+                                                                        echo 'Làm ơn thêm sản phẩm vào giỏ hàng';
+                                                                    @endphp
+                                                            </td>
+                                                        </tr>
+                                                    @endif
                                                     </tbody>
 
                                                 </table>

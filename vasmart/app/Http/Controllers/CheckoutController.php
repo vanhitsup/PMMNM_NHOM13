@@ -11,6 +11,9 @@ use App\Models\City;
 use App\Models\Province;
 use App\Models\Ward;
 use App\Models\Feeship;
+use App\Models\Order;
+use App\Models\Order_detail;
+use App\Models\Shipping;
 session_start();
 class CheckoutController extends Controller
 {
@@ -57,6 +60,51 @@ class CheckoutController extends Controller
         $city = City::orderby('matp','ASC')->get();
 
         return view('checkout.checkout')->with('category', $cate_product)->with('brand', $brand_product)->with('city',$city);
+    }
+
+    public function confirm_order(Request  $request){
+        $data = $request->all();
+
+        $shipping = new Shipping();
+        $shipping->shipping_name = $data['shipping_name'];
+        $shipping->shipping_email = $data['shipping_email'];
+        $shipping->shipping_phone = $data['shipping_phone'];
+        $shipping->shipping_address = $data['shipping_address'];
+        $shipping->shipping_note = $data['shipping_note'];
+        $shipping->shipping_method = $data['shipping_method'];
+        $shipping->save();
+
+        $shipping_id = $shipping->shipping_id;
+        $checkout_code = substr(md5(microtime()),rand(0,26),5);
+
+        $order = new Order;
+        $order->customer_id = Session::get('customer_id');
+        $order->shipping_id = $shipping_id;
+        $order->order_status = 1;
+        $order->order_code = $checkout_code;
+
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
+        $order->created_at=now();
+
+        $order->save();
+
+        if(Session::get('cart')==true){
+            foreach(Session::get('cart') as $key => $cart){
+                $order_details = new Order_detail();
+                $order_details->order_code = $checkout_code;
+                $order_details->product_id = $cart['product_id'];
+                $order_details->product_name = $cart['product_name'];
+                $order_details->product_price = $cart['product_price'];
+                $order_details->product_sales_quantity = $cart['product_qty'];
+                $order_details->product_coupon =  $data['order_coupon'];
+                $order_details->product_feeship = $data['order_fee'];
+                $order_details->save();
+            }
+        }
+        Session::forget('coupon');
+        Session::forget('fee');
+        Session::forget('cart');
+
     }
 
     public function calculate_fee(Request $request){
