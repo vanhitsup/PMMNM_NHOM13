@@ -39,12 +39,12 @@ $i=1;
                         <tbody>
                         @foreach ($list_product  as $key=>$value)
                             <tr>
-                                <td width="10px"><?php echo $i; $i++; ?></td>
-                                <td>{{$value->product_name}}</td>
-                                <td>{{$value->product_price}}</td>
-                                <td><img src="../public/uploads/products/{{$value->product_image}}" width="100" height="100"></td>
-                                <td>{{$value->category_name}}</td>
-                                <td>{{$value->brand_name}}</td>
+                                <td align="center" width="10px"><?php echo $i; $i++; ?></td>
+                                <td align="center">{{$value->product_name}}</td>
+                                <td align="center">{{$value->product_price}}</td>
+                                <td align="center"><img src="../public/uploads/products/{{$value->product_image}}" width="100" height="100"></td>
+                                <td align="center">{{$value->category_name}}</td>
+                                <td align="center">{{$value->brand_name}}</td>
                                 <td align="center" >
 
                                     <?php if( $value->product_status==1){ ?>
@@ -56,7 +56,7 @@ $i=1;
                                     <?php } ?>
 
                                 </td>
-                                <td>
+                                <td align="center">
                                     <a href="{{\Illuminate\Support\Facades\URL::to('edit-product/'.$value->product_id)}}" class="active" style="text-decoration: none">
                                         <button type="button" class="btn btn-outline-success">Sửa</button>
                                     </a>

@@ -35,8 +35,8 @@ $i=1;
                         <tbody>
                         @foreach ($list_brand_product  as $key=>$value)
                             <tr>
-                                <td width="10px"><?php echo $i; $i++; ?></td>
-                                <td>{{$value->brand_name}}</td>
+                                <td align="center" width="10px"><?php echo $i; $i++; ?></td>
+                                <td align="center">{{$value->brand_name}}</td>
                                 <td align="center" >
 
                                     <?php if( $value->brand_status==1){ ?>
@@ -48,7 +48,7 @@ $i=1;
                                     <?php } ?>
 
                                 </td>
-                                <td>
+                                <td align="center">
                                     <a href="{{\Illuminate\Support\Facades\URL::to('edit-brand-product/'.$value->brand_id)}}" class="active" style="text-decoration: none">
                                         <button type="button" class="btn btn-outline-success">Sửa</button>
                                     </a>

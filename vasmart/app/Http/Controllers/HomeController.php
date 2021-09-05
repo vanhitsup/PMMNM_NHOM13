@@ -16,6 +16,7 @@ class HomeController extends Controller
             ->orderBy('product_id','desc')->limit(5)->get();
         $item_product=DB::table('products')->where('product_status','1')
             ->orderBy('product_id','asc')->limit(8)->get();
+
         return view('index')->with('list_product',$list_product)->with('item_product',$item_product);
     }
     public function shop(){

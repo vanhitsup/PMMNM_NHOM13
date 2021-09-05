@@ -29,17 +29,17 @@ $i=1;
                             <th>Mã đơn hàng</th>
                             <th>Ngày tháng đặt hàng</th>
                             <th>Tình trạng đơn hàng</th>
-                            <th></th>
+                            <th align="center">Chi tiết đơn hàng</th>
                         </tr>
                         </thead>
 
                         <tbody>
                         @foreach($getorder as $key =>$value)
                             <tr>
-                                <td width="10px"><?php echo $i; $i++; ?></td>
-                                <td>{{$value->order_code}}</td>
-                                <td>{{$value->created_at}}</td>
-                                <td>
+                                <td width="10px" align="center"><?php echo $i; $i++; ?></td>
+                                <td align="center">{{$value->order_code}}</td>
+                                <td align="center">{{$value->created_at}}</td>
+                                <td align="center">
                                     @if($value->order_status==1)
                                         <span class="text text-success">Đơn hàng mới</span>
                                     @elseif($value->order_status==2)
@@ -48,13 +48,11 @@ $i=1;
                                         <span class="text text-danger">Đơn hàng đã bị hủy</span>
                                     @endif
                                 </td>
-                                <td>
+                                <td align="center">
                                     <a href="{{\Illuminate\Support\Facades\URL::to('view-order/'.$value->order_code)}}" class="active" style="text-decoration: none">
                                         <button type="button" class="btn btn-outline-success">Xem chi tiết</button>
                                     </a>
-                                    <a onclick="return confirm('Bạn có chắc muốn xóa đơn hàng này không?')"  href="{{\Illuminate\Support\Facades\URL::to('delete-order/'.$value->order_code)}}" class="active" style="text-decoration: none">
-                                        <button type="button" class="btn btn-outline-danger">Xóa</button>
-                                    </a>
+
                                 </td>
                             </tr>
                         @endforeach

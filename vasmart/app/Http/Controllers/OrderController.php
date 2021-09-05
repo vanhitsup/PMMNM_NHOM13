@@ -71,7 +71,7 @@ class OrderController extends Controller
 
         $order_details_product = Order_detail::with('product')->where('order_code', $checkout_code)->get();
 
-        foreach($order_details_product as $key => $order_d){
+    foreach($order_details_product as $key => $order_d){
 
             $product_coupon = $order_d->product_coupon;
         }
@@ -84,13 +84,12 @@ class OrderController extends Controller
             if($coupon_condition==1){
                 $coupon_echo = $coupon_number.'%';
             }elseif($coupon_condition==2){
-                $coupon_echo = number_format($coupon_number,0,',','.').'đ';
+                $coupon_echo = $coupon_number;
             }
         }else{
             $coupon_condition = 2;
-            $coupon_number = 0;
+            $coupon_echo = 0;
 
-            $coupon_echo = '0';
 
         }
 
@@ -101,32 +100,16 @@ class OrderController extends Controller
            <div style="font-family: DejaVu Sans;">
            <p align="right" style="margin-top: -20px">Cộng Hòa Xã Hội Chủ Nghĩa Việt Nam</p>
            <p style="margin:-18px 0 0 440px ">Độc Lập - Tự Do - Hạnh Phúc</p>
+           <p style="font-weight: bold; margin-top: -50px">C.TY TNHH VA-SMART</p>
            <p align="center" style="margin:10px 0 40px 0 ;font-weight: bold ">PHIẾU ĐƠN HÀNG</p>
-               <p style="font-style: italic; font-size: 13px">Thông tin người đặt hàng</p>
+                                       <p align="center" style="margin: -40px 0 20px 0">-------oOo-------</p>
                <div class="row">
                    <div class="col-md-2"></div>
                    <div class="col-lg-12">
-                       <table class="table table-bordered" style="width: 100% ;font-size: 13px" >
-                           <thead>
-                               <tr>
-                                  <th width="40%" height="3%">Người đặt hàng</th>
-                                  <th>Số điện thoại</th>
-                                  <th>Email</th>
-                               </tr>
-                           </thead>
-                           <tbody>
-                               <tr>
-                                    <td style="height: 10px">'.$customer->customer_name.'</td>
-	                            	<td style="height: 10px">'.$customer->customer_phone.'</td>
-		                            <td style="height: 10px">'.$customer->customer_email.'</td>
-                               </tr>
 
-                          </tbody>
-                       </table>
                    </div>
                </div>
-               <hr>
-                    <p style="font-style: italic; font-size: 13px; margin-top: 30px">Thông tin người đặt hàng</p>
+                   <p style="font-style: italic; font-size: 13px; margin-top: 30px">Thông tin người nhận hàng</p>
                   <div class="row">
                    <div class="col-md-2"></div>
                    <div class="col-lg-12">
@@ -140,7 +123,8 @@ class OrderController extends Controller
                                   <th>Ghi chú</th>
                                </tr>
                            </thead>
-                           <tbody>
+                           <tbody>';
+                     $output.= '
                                <tr>
 
                                    <td>'.$shipping->shipping_name.'</td>
@@ -149,39 +133,89 @@ class OrderController extends Controller
 		                          <td>'.$shipping->shipping_email.'</td>
 		                          <td>'.$shipping->shipping_note.'</td>
 
-                               </tr>
-
+                               </tr>';
+                        $output.= '
                           </tbody>
                        </table>
                    </div>
                </div>
                <hr>
-               <p style="font-style: italic; font-size: 13px; margin-top: 30px">Chi tiết đơn hàng</p>
-               <div class="row">
+           <p style="font-style: italic; font-size: 13px; margin-top: 30px">Chi tiết đơn hàng</p>
+                  <div class="row">
                    <div class="col-md-2"></div>
                    <div class="col-lg-12">
                        <table class="table table-bordered" style="width: 100% ;font-size: 13px" >
                            <thead>
-                            <tr>
-                             <th width="25%" height="3%">Tên sản phẩm</th>
-                            <th>Số lượng</th>
-                            <th>Giá bán</th>
-                            <th>Tổng</th>
-                        </tr>
-
+                               <tr>
+                                  <th>STT</th>
+                                  <th>Tên sản phẩm</th>
+                                  <th width="10%">Số lượng</th>
+                                  <th>Giá bán</th>
+                                  <th>Tổng</th>
                                </tr>
                            </thead>
-                           <tbody>
+                           <tbody>';
+                        $i=0;
+                      $i++;
 
-                            <tr>
-                                    <td style="height: 10px"></td>
-	                            	<td style="height: 10px"></td>
-		                            <td style="height: 10px"></td>
-		                            <td style="height: 10px"></td>
-                               </tr>
+//
+        foreach ($order_details_product as $key=>$detail)
+            $output.= '
 
+                                <tr>
+                                   <td>'.$i++.'</td>
+		                            <td>'.$detail->product_name.'</td>
+                                     <td>'.$detail->product_sales_quantity.'</td>
+                                     <td>'.number_format($detail->product_price).' đ</td>
+                                     <td>'.number_format($detail->product_price*$detail->product_sales_quantity).' đ</td>
+                               </tr>';
+        $subtotals = 0;
+        $subtotal = $detail->product_price*$detail->product_sales_quantity;
+        $subtotals+=$subtotal;
+        if($detail->product_coupon!='no'){
+            $product_coupon = $detail->product_coupon;
+        }else{
+            $product_coupon = 'không mã';
+        }
+        $output.= '
+                                <tr>
+                                       <td colspan="2">
+                                          <span style="font-weight: bold">Mã giảm giá:</span>
+                                          '.$product_coupon.'
+                                        </td>
+                                        <td colspan="2">
+                                         <span style="font-weight: bold"> Số tiền được giảm: </span>
+                                         '.number_format($coupon_echo).' đ
+                                        </td>
+                                        <td >
+                                        <span style="font-weight: bold"> Phí Ship:</span>
+                                         '.number_format($detail->product_feeship).' đ
+                                        </td>
+                                </tr>';
+                              $output.='
+                                <tr>
+                            <td colspan="5" align="center">
+                                <span style="font-weight: bold;">
+                                Tổng giá trị đơn hàng phải thanh toán:
+                            </span>
+                              <span style="color: red; font-weight: bold; ">
+                                  95,985,000 đ
+                              </span>
+                           </td>
+                                </tr>';
+                             $output.='
 
                           </tbody>
+                            <div class="admin" style="margin-left: 400px; margin-top:50px" >
+                                 <p style="margin-bottom: 50px; font-weight: bold">Người lập phiếu</p>
+                                  <p style="font-style: italic">Phạm Trần Việt Anh</p>
+                             </div>
+                             <div class="user" style="float: left; margin-left: 30px; margin-top: 50px">
+                             <p  style="margin-bottom: 60px; font-weight: bold">Người mua hàng</p>
+                             <p style="font-style: italic">'.$shipping->shipping_name.'</p>
+                            </div>
+
+
                        </table>
                    </div>
                </div>

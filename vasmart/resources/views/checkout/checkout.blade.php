@@ -49,14 +49,14 @@ $total_pt=0;
 
 
                             </div>
-                        @if(Session::get('cart')==true)
+                        @if(\Illuminate\Support\Facades\Session::get('cart')==true)
 
                             @php
                                 $total = 0;
                             @endphp
                             @foreach(\Illuminate\Support\Facades\Session::get('cart') as $key => $cart)
                                 @php
-                                    $subtotal = $cart['product_price']*$cart['product_qty'];
+                                    $subtotal = $cart['product_price'] * $cart['product_qty'];
                                     $total+=$subtotal;
                                 @endphp
                             @endforeach
